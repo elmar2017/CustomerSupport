@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CustomerSupport</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CustomerSupport.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+<body>
+    @* <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Create">CustomerSupport</a>
+        </div>
+        </nav>
+        </header>*@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @if(TempData["Success"] is not null)
+            {
+            <div class="alert alert-primary text-center" role="alert" >
+                @TempData["Success"]
+            </div>
+            }
+            @if(TempData["Errors"] is not null)
+            {
+            @foreach (var message in (TempData["Errors"] as List<string>) ?? new List<string>())
+            {
+                <div class="alert alert-danger text-center" role="alert">
+                    @message
+                </div>
+            }
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

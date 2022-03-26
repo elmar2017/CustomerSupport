@@ -1,0 +1,72 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+.card {
+    border: none;
+    height: 100%
+}
+
+.forms-inputs {
+    position: relative
+}
+
+    .forms-inputs span {
+        position: absolute;
+        top: -18px;
+        left: 10px;
+        background-color: #fff;
+        padding: 5px 10px;
+        font-size: 15px
+    }
+
+    .forms-inputs input {
+        height: 50px;
+        border: 2px solid #eee
+    }
+
+        .forms-inputs input:focus {
+            box-shadow: none;
+            outline: none;
+            border: 2px solid #000
+        }
+
+    .forms-inputs select:focus {
+        box-shadow: none;
+        outline: none;
+        border: 2px solid #000;
+        height: 50px;
+    }
+    .forms-inputs select {
+        box-shadow: none;
+        height: 50px;
+    }
+
+    .forms-inputs textarea:focus {
+        box-shadow: none;
+        outline: none;
+        border: 2px solid #000
+    }
+
+
+
+.btn {
+    height: 50px
+}
+

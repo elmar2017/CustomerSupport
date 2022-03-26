@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model CustomerSupport.Models.ViewModels.CreateEnquireVM
+
+@section styles {
+<style>
+    .has-error {
+        border: 2px solid red !important;
+    }
+
+    .error {
+        color: #F00;
+        background-color: #FFF;
+    }
+</style>
+}
+
+
+<form id="contact-form" name="contact-form" method="POST">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <span class="text-center fs-1">Send us your feedback</span>
+            <div class="col-md-6">
+                <div class="card px-5 py-5">
+                    <div>
+                        @if (ViewBag.Errors is not null)
+                        {
+                            @foreach (var errorMessage in ViewBag.Errors)
+                            {
+                                <div>@errorMessage</div>
+                            }
+                        }
+
+                    </div>
+                    <div class="form-data">
+                        <div class="forms-inputs mb-4">
+                            <span>Email</span>
+                            <input type="text" name="Email" class="form-control" autocomplete="off" value="@Model?.Email">
+                        </div>
+                    </div>
+                    <div class="form-data">
+                        <div class="forms-inputs mb-4">
+                            <span>Phone</span>
+                            <input type="number" name="PhoneNumber" class="form-control" autocomplete="off" value="@Model?.PhoneNumber">
+                        </div>
+                    </div>
+                    <div class="form-data">
+                        <div class="forms-inputs mb-4">
+                            <span>Customer number</span>
+                            <input type="text" name="CustomerNumber" class="form-control" autocomplete="off" value="@Model?.CustomerNumber">
+                        </div>
+                    </div>
+                    <div class="form-data">
+                        <div class="forms-inputs mb-4">
+                            <span>Inqury type</span>
+                            <select class="form-control" name="InquiryType">
+                                <option></option>
+                                @foreach (var enquireType in @Model?.EnquireTypes ?? new List<string>())
+                                {
+                                    <option value="@enquireType" selected="@(Model?.InquiryType == enquireType)">@enquireType</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-data">
+                        <div class="forms-inputs mb-4">
+                            <span>Description</span>
+                            <textarea class="form-control" name="Description" autocomplete="off">@Model?.Description</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-data">
+                        <div class="mb-4">
+                            <label><input type="checkbox" name="AgreeTerms" value="true" @(Model?.AgreeTerms ?? false ? "checked":"") /> Agree the terms </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button id="submitBtn" class="btn btn-dark w-100">Send</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+
+<script>
+
+        //jQuery CODE
+    $(document).ready(function () {
+
+
+
+        $('#submitBtn').click(function(e){
+            var form = $('#contact-form');
+            form.validate();
+            if(!form.valid()) {
+                e.preventDefault(); //prevent the default action
+                }
+        });
+
+       //#region THIS METHOD IS USED TO VALIDATE USER DETAIL AND SERVICES.
+        $('#contact-form').validate({ // initialize the plugin
+            rules: {
+                Email: {
+                    required: true,
+                    email: true
+                },
+                PhoneNumber: {
+                    required: true
+                },
+                InquiryType: {
+                    required: true
+                },
+                Description: {
+                    required: true
+                },
+                AgreeTerms: {
+                    required: true
+                },
+            },
+            messages: {
+                    Email: {
+                        required: "Email is required"
+                    },
+                    PhoneNumber: {
+                        required: "Phone number is required"
+                    },
+                    InquiryType: {
+                        required: "Inquiry type is required"
+                    },
+                    Description: {
+                        required: "Description is required"
+                    },
+                    AgreeTerms: {
+                        required: "You must "
+                    }
+                },
+            highlight: function(element) {
+            $(element).addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).removeClass('has-error');
+            },
+            errorPlacement: function(error, element) {
+            if (element.type == 'checkbox') {
+                error.appendTo(element.parent());
+            }
+            else {
+                error.insertAfter(element);
+            }
+        }
+        });
+        //#endregion
+    });
+</script>
+
+}
+
+
+
