@@ -17,7 +17,11 @@ namespace CustomerSupport.BLL.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Tocreate enquire
+        /// </summary>
+        /// <param name="createEnquiryDto"></param>
+        /// <returns></returns>
         public ServiceResult<bool> CreateInquire(CreateEnquireDto createEnquiryDto)
         {
             var serviceResult = new ServiceResult<bool>();

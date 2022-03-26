@@ -30,7 +30,7 @@ namespace CustomerSupport.Controllers
         }
 
         /// <summary>
-        /// To create an enquire
+        /// To create an enquire. CreateEnquireDto model is validated in EnquireValidator
         /// </summary>
         /// <param name="createEnquireDto"></param>
         /// <returns></returns>

@@ -6,10 +6,16 @@ namespace CustomerSupport.DAL.Concrete
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         public VirtualDb<BaseEntity> _virtualDb;
+
         public Repository(VirtualDb<BaseEntity> virtualDb)
         {
             _virtualDb = virtualDb;
         }
+
+        /// <summary>
+        /// To insert object to virtural repository. VirtualDb is created as singleton.
+        /// </summary>
+        /// <param name="entity"></param>
         public virtual void Insert(TEntity entity)
         {
             _virtualDb.Enquires.Add(entity);
