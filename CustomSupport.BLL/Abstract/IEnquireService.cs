@@ -10,6 +10,6 @@ namespace CustomerSupport.BLL.Abstract
 {
     public interface IEnquireService
     {
-        ServiceResult<bool> CreateInquire(CreateEnquireDto createEnquiryDto);
+        void CreateInquire(CreateEnquireDto createEnquiryDto);
     }
 }

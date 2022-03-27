@@ -40,16 +40,8 @@ namespace CustomerSupport.Controllers
             var createEnquireVM = _mapper.Map<CreateEnquireVM>(createEnquireDto);
             if (ModelState.IsValid)
             {
-                var serviceResult = _enquireService.CreateInquire(createEnquireDto);
-                if (serviceResult.Succeeded)
-                {
-                    TempData["Success"] = "Your feedback was successfully submitted";
-                }
-                else
-                {
-                    _logger.ErrorHappended(serviceResult.exception);
-                    TempData["Errors"] = serviceResult.errors;
-                }
+                _enquireService.CreateInquire(createEnquireDto);
+                TempData["Success"] = "Your feedback was successfully submitted";
             }
             else
             {

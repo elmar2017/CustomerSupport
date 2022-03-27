@@ -5,7 +5,7 @@ namespace CustomerSupport.Controllers
     public class ErrorController : Controller
     {
         [HttpGet]
-        public IActionResult NotFound()
+        public IActionResult Error()
         {
             return View();
         }

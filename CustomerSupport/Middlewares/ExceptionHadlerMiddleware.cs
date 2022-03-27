@@ -22,11 +22,7 @@ namespace CustomerSupport.Middlewares
             catch (Exception ex)
             {
                 _logger.ErrorHappended(ex);
-                if (context.Response.StatusCode == StatusCodes.Status404NotFound && !context.Response.HasStarted)
-                {
-                    context.Request.Path = "/Error/NotFound";
-                    await _next(context);
-                }
+                context.Response.Redirect("/Error/Error");
             }
         }
     }

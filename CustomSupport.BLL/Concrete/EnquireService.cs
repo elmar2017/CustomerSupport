@@ -22,20 +22,9 @@ namespace CustomerSupport.BLL.Concrete
         /// </summary>
         /// <param name="createEnquiryDto"></param>
         /// <returns></returns>
-        public ServiceResult<bool> CreateInquire(CreateEnquireDto createEnquiryDto)
+        public void CreateInquire(CreateEnquireDto createEnquiryDto)
         {
-            var serviceResult = new ServiceResult<bool>();
-            try
-            {
-                _unitOfWork.EnquireRepository.Insert(_mapper.Map<Enquire>(createEnquiryDto));
-            }
-            catch (Exception ex)
-            {
-                serviceResult.exception = ex;
-                serviceResult.errors.Add("Error happened while adding enquire");
-            }
-            return serviceResult;
-
+            _unitOfWork.EnquireRepository.Insert(_mapper.Map<Enquire>(createEnquiryDto));
         }
     }
 }
