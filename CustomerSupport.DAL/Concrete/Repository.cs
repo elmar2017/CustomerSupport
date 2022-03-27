@@ -18,7 +18,6 @@ namespace CustomerSupport.DAL.Concrete
         /// <param name="entity"></param>
         public virtual void Insert(TEntity entity)
         {
-            throw new Exception();
             _virtualDb.Enquires.Add(entity);
         }
         public virtual IEnumerable<TEntity> GetAll()
