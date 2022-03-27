@@ -11,13 +11,6 @@
 
 </head>
 <body>
-    @* <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Create">CustomerSupport</a>
-        </div>
-        </nav>
-        </header>*@
     <div class="container">
         <main role="main" class="pb-3">
             @if(TempData["Success"] is not null)
@@ -25,15 +18,6 @@
             <div class="alert alert-primary text-center" role="alert" >
                 @TempData["Success"]
             </div>
-            }
-            @if(TempData["Errors"] is not null)
-            {
-            @foreach (var message in (TempData["Errors"] as List<string>) ?? new List<string>())
-            {
-                <div class="alert alert-danger text-center" role="alert">
-                    @message
-                </div>
-            }
             }
             @RenderBody()
         </main>

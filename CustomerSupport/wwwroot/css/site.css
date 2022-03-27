@@ -15,6 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #e9e9e9;
 }
 
 
@@ -53,6 +54,7 @@ body {
         border: 2px solid #000;
         height: 50px;
     }
+
     .forms-inputs select {
         box-shadow: none;
         height: 50px;
@@ -69,4 +71,3 @@ body {
 .btn {
     height: 50px
 }
-

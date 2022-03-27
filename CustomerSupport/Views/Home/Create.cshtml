@@ -20,70 +20,71 @@
 <form id="contact-form" name="contact-form" method="POST">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
-            <span class="text-center fs-1">Send us your feedback</span>
             <div class="col-md-6">
                 <div class="card px-5 py-5">
-                    <div>
-                        @if (ViewBag.Errors is not null)
-                        {
-                            @foreach (var errorMessage in ViewBag.Errors)
+                    <h2 class="text-center card-title mb-4">Send us your feedback</h2>
+                    <div class="card-body">
+                        <div>
+                            @if (ViewBag.Errors is not null)
                             {
-                                <div>@errorMessage</div>
-                            }
-                        }
-
-                    </div>
-                    <div class="form-data">
-                        <div class="forms-inputs mb-4">
-                            <span>Email</span>
-                            <input type="text" name="Email" class="form-control" autocomplete="off" value="@Model?.Email">
-                        </div>
-                    </div>
-                    <div class="form-data">
-                        <div class="forms-inputs mb-4">
-                            <span>Phone</span>
-                            <input type="number" name="PhoneNumber" class="form-control" autocomplete="off" value="@Model?.PhoneNumber">
-                        </div>
-                    </div>
-                    <div class="form-data">
-                        <div class="forms-inputs mb-4">
-                            <span>Customer number</span>
-                            <input type="text" name="CustomerNumber" class="form-control" autocomplete="off" value="@Model?.CustomerNumber">
-                        </div>
-                    </div>
-                    <div class="form-data">
-                        <div class="forms-inputs mb-4">
-                            <span>Inqury type</span>
-                            <select class="form-control" name="InquiryType">
-                                <option></option>
-                                @foreach (var enquireType in @Model?.EnquireTypes ?? new List<string>())
+                                @foreach (var errorMessage in ViewBag.Errors)
                                 {
-                                    <option value="@enquireType" selected="@(Model?.InquiryType == enquireType)">@enquireType</option>
+                                    <div>@errorMessage</div>
                                 }
-                            </select>
+                            }
+
                         </div>
-                    </div>
-
-                    <div class="form-data">
-                        <div class="forms-inputs mb-4">
-                            <span>Description</span>
-                            <textarea class="form-control" name="Description" autocomplete="off">@Model?.Description</textarea>
+                        <div class="form-data">
+                            <div class="forms-inputs mb-4">
+                                <span>Email</span>
+                                <input type="text" name="Email" class="form-control" autocomplete="off" value="@Model?.Email">
+                            </div>
                         </div>
-                    </div>
-
-
-                    <div class="form-data">
-                        <div class="mb-4">
-                            <label><input type="checkbox" name="AgreeTerms" value="true" @(Model?.AgreeTerms ?? false ? "checked":"") /> Agree the terms </label>
+                        <div class="form-data">
+                            <div class="forms-inputs mb-4">
+                                <span>Phone</span>
+                                <input type="number" name="PhoneNumber" class="form-control" autocomplete="off" value="@Model?.PhoneNumber">
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-data">
+                            <div class="forms-inputs mb-4">
+                                <span>Customer number</span>
+                                <input type="text" name="CustomerNumber" class="form-control" autocomplete="off" value="@Model?.CustomerNumber">
+                            </div>
+                        </div>
+                        <div class="form-data">
+                            <div class="forms-inputs mb-4">
+                                <span>Inqury type</span>
+                                <select class="form-control" name="InquiryType">
+                                    <option></option>
+                                    @foreach (var enquireType in @Model?.EnquireTypes ?? new List<string>())
+                                    {
+                                        <option value="@enquireType" selected="@(Model?.InquiryType == enquireType)">@enquireType</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="mb-3">
-                        <button id="submitBtn" class="btn btn-dark w-100">Send</button>
-                    </div>
+                        <div class="form-data">
+                            <div class="forms-inputs mb-4">
+                                <span>Description</span>
+                                <textarea class="form-control" name="Description" autocomplete="off">@Model?.Description</textarea>
+                            </div>
+                        </div>
 
+
+                        <div class="form-data">
+                            <div class="mb-4">
+                                <label><input type="checkbox" name="AgreeTerms" value="true" @(Model?.AgreeTerms ?? false ? "checked":"") /> Agree the terms </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button id="submitBtn" class="btn btn-dark w-100">Send</button>
+                        </div>
+
+                    </div>
                 </div>
-
 
             </div>
         </div>
